@@ -1,5 +1,4 @@
-// problem 10-3
-#include <iomanip>
+//problem 10-3
 #include <iostream>
 using namespace std;
 template <typename T>
@@ -37,7 +36,7 @@ void printArray(const char *a[], int count) /*important!!!!!*/
 {
     for (int i = 0; i < count; i++)
     {
-        cout << setw(10) << a[i] << " ";
+        cout << a[i] << " ";
         if ((i + 1) % 4 == 0)
         {
             cout << endl;

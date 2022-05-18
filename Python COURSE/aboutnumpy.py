@@ -139,3 +139,38 @@ print(q)
 
 print("23.\n")
 # 数组与标量的运算是按元素来的，所以有正常的计算就行
+# "+"
+r = np.add(p, p)
+print(r)
+print("-" * 30)
+
+# "-"
+s = np.subtract(p, p)
+print(s)
+print("-" * 30)
+
+t = np.multiply(p, p)
+print(t)
+print("-" * 30)
+
+# like "y=np.ways(x,y)"
+# "/"=divide
+# "//"=floor_divide
+# "-"=negative
+# "**"=power
+# "%"=remainder...
+# "=="=equal
+# "!="=not_equal
+# "<"=less
+# "<="=less_equal
+# ">"=greater
+# ">="greater_equal
+#  np.abs(x)计算元素的绝对值
+#  np.sqrt(x)计算每个元素的平方根
+#  np.square(x)计算每个元素的平方
+#  np.ceil(x)计算大于等于每个元素的最小值
+#  np.floor(x)计算小于等于每个元素的最大值
+#  np.exp(x[,out])计算每个元素的指数值
+#  np.log(x)计算自然对数
+#  np.log10(x) 计算底为10的对数
+#  np.log2(x) 计算底为2的对数

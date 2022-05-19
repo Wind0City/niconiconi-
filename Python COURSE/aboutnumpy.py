@@ -1,4 +1,5 @@
 import numpy as np
+import numpy.linalg  # 矩阵相关需要模块
 
 print("1.\n")
 a = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]
@@ -58,8 +59,8 @@ print(k)
 print("-" * 30)
 
 print("11.\n")
-l1 = np.random.randint(1, 12, size=(5, 5))  # size是形状，数是1-12，不包括12之间
-print(l1)
+l2 = np.random.randint(1, 12, size=(5, 5))  # size是形状，数是1-12，不包括12之间
+print(l2)
 print("-" * 30)
 
 print("12.\n")
@@ -122,7 +123,7 @@ o = np.hstack([c, c])  # 横向串糖葫芦
 print(o)
 print("-" * 30)
 
-print("21.\n")
+print("21.\n")  # 拼接
 p = np.concatenate([b, b, b], axis=1)
 print(p)
 print("-" * 30)
@@ -136,6 +137,7 @@ q = np.where(b > 5, 2, 0)  # 满足条件输出2，不满足输出0（针对b数
 print(q)
 q = b[np.where(b > 3)]  # 输出的是索引,当然此处又用了b取下标，输出的是元素
 print(q)
+print("-" * 30)
 
 print("23.\n")
 # 数组与标量的运算是按元素来的，所以有正常的计算就行
@@ -174,3 +176,36 @@ print("-" * 30)
 #  np.log(x)计算自然对数
 #  np.log10(x) 计算底为10的对数
 #  np.log2(x) 计算底为2的对数
+
+# 矩阵相关：
+A = np.array([[1, 1, 1], [0, 2, 5], [2, 5, -1]])
+B = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+X = np.array([6, -4, 27])
+# 相乘
+C = np.dot(A, B)
+print(C)
+print("-" * 30)
+
+# 逆矩阵
+D = numpy.linalg.inv(A)
+print(A)
+print("-" * 30)
+
+# 解决线性方程组
+ans = numpy.linalg.solve(A, X)
+print(ans)
+print("-" * 30)
+
+# 求特征值,特征向量,eig方法不太懂用法
+E = numpy.linalg.eigvals(A)
+print(E)
+F = numpy.linalg.eigvalsh(A)
+print(F)
+print("-" * 30)
+
+# svd 奇异值分解（不理解
+
+# 求行列式
+G = numpy.linalg.det(A)
+print(G)
+print("-" * 30)

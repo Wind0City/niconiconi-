@@ -62,6 +62,6 @@ k = np.sort(b, 1)  # 按行排，各行自行排，左边为最小
 print(k)
 print("-" * 30)
 
-l1 = np.argsort(a)  # np.argsort()返回升序排序后的索引值，用法不太多（其实不知道
+l1 = np.argsort(a)  # np.argsort()返回升序排序后的索引值,一般默认是从小到大排序，但用此方法可以用[::-1]来进行逆向排序
 print(l1)
 print("-" * 30)

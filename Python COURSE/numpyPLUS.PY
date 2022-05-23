@@ -16,7 +16,7 @@ print(y)
 print("-" * 30)
 
 # mean(a，axis=none),沿轴的元素的总和除以元素的数量
-z = np.mean(a, 1)  # 竖向求和算期望
+z = np.mean(a, 0)  # 竖向求和算期望
 print(z)
 c = np.mean(a, 1)  # 横向求和算期望
 print(c)

@@ -33,4 +33,5 @@ multimap中键值对中的key是可以重复的。
 multimap与multiset，除了有重复键与元素和不能修改之外，与map和set并无区别，对应的题目对应着使用就行
 最最最重要的:多个相同的关键字存储在容器中时，则会相邻存储；(multimap)!!!!!!
 所以查找元素可以使用find+count，lower-bound+upper-bound来查找!!!
+equal_range查找返回的是pair< lower_bound, upper_bound>!!!!
 */

@@ -1,4 +1,4 @@
-//11-5
+// 11-5
 #include <iostream>
 #include <stack>
 using namespace std;
@@ -17,6 +17,11 @@ int main()
         }
         if (x[j] == '}' || x[j] == ')' || x[i] == ']')
         {
+            if (a.empty()) //避免出现第一个就是右括号
+            {
+                cout << "false" << endl;
+                return 0;
+            }
             a.pop();
         }
     }

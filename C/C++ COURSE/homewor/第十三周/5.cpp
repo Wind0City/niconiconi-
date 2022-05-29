@@ -17,12 +17,16 @@ int main()
         }
         if (x[j] == '}' || x[j] == ')' || x[i] == ']')
         {
-            if (a.empty()) //避免出现第一个就是右括号
+
+            if (a.empty())
             {
                 cout << "false" << endl;
                 return 0;
             }
-            a.pop();
+            if ((x[j] == '}' && x[j - 1] == '{') || (x[j] == ')' && x[j - 1] == '(') || (x[j] == ']' && x[j - 1] == '['))
+            {
+                a.pop();
+            }
         }
     }
     if (a.empty())

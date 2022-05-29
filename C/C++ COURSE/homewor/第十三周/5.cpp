@@ -4,38 +4,53 @@
 using namespace std;
 int main()
 {
-    stack<char> a;
+    stack<char> a, b, c;
     char x[1000];
     int i = 0;
     while ((x[i++] = getchar()) != '\n')
         ;
     for (int j = 0; j < i; j++)
     {
-        if (x[j] == '{' || x[j] == '(' || x[i] == '[')
-        {
+        if (x[j] == '{')
             a.push(x[j]);
-        }
-        if (x[j] == '}' || x[j] == ')' || x[i] == ']')
+        if (x[j] == '(')
+            b.push(x[j]);
+        if (x[j] == '[')
+            c.push(x[j]);
+        if (x[j] == '}')
         {
-
-            if (a.empty())
+            if (a.empty()) //避免第一个是右括号
             {
                 cout << "false" << endl;
                 return 0;
             }
-            if ((x[j] == '}' && x[j - 1] == '{') || (x[j] == ')' && x[j - 1] == '(') || (x[j] == ']' && x[j - 1] == '['))
+            a.pop();
+        }
+        if (x[j] == ')')
+        {
+            if (b.empty()) //避免第一个是右括号
             {
-                a.pop();
+                cout << "false" << endl;
+                return 0;
             }
+            b.pop();
+        }
+        if (x[j] == ']')
+        {
+            if (c.empty()) //避免第一个是右括号
+            {
+                cout << "false" << endl;
+                return 0;
+            }
+            c.pop();
         }
     }
-    if (a.empty())
+    if (a.empty() && b.empty() && c.empty())
     {
         cout << "true" << endl;
     }
     else
     {
-
         cout << "false" << endl;
     }
     return 0;

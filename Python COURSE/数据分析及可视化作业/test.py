@@ -19,7 +19,7 @@ xj_ave = df3['成绩'].mean()
 xj_tol = df3['成绩'].sum()
 xl_ave = df4['成绩'].mean()
 xl_tol = df4['成绩'].sum()
-a = "{0:<10}{1:<5.1f}{2:>10.2f}"+6
+a = "{0:<10}{1:<5.1f}{2:>10.2f}"
 
 print(a.format('小红', xh_tol, xh_ave))
 print(a.format('张明', zm_tol, zm_ave))

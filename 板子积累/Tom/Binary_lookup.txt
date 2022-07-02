@@ -1,0 +1,17 @@
+Binary_lookup 二分查找
+一般模板
+
+while(左端点<右端点)
+{
+    int mid =(l+r)>>1;
+    if(check(mid))一般是此时的mid大了的情况下
+    {
+        r=mid;
+    }
+    else此时的mid小了的情况下
+    {
+        l=mid +1;
+    }
+}
+return l;返回左端点
+check()一般在答案大了的情况下返回true，小了返回false，check函数不同题是不一样的判断方式

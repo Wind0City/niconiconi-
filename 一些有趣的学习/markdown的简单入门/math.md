@@ -1,0 +1,232 @@
+#数学公式相关  
+
+## 符号举例(表格形式)
+
+功能性：给公式加边框  
+$$\boxed{E=mc^2} $$
+
+|    运算符     |    说明    |                   举例                    |                 举例代码                  |
+| :-----------: | :--------: | :---------------------------------------: | :---------------------------------------: |
+|       +       |     加     |                   $x+y$                   |                  `$x+y$`                  |
+|       -       |     减     |                   $x-y$                   |                  `$x-y$`                  |
+|    \times     |     乘     |               $x \times y$                |              `$x \times y$`               |
+|     \ast      |     乘     |                $x \ast y$                 |               `$x \ast y$`                |
+|     \div      |     除     |                $x \div y$                 |               `$x \div y$`                |
+|     \cup      |    并集    |                $x \cup y$                 |               `$x \cup y$`                |
+|     \geq      |  大于等于  |                $x \geq y$                 |               `$x \geq y$`                |
+|     \leq      |  小于等于  |                $x \leq y$                 |               `$x \leq y$`                |
+|     \neq      |   不等于   |                $x \neq y$                 |               `$x \neq y$`                |
+|   \not\geq    | 不大于等于 |              $x \not\geq y$               |             `$x \not\geq y$`              |
+|   \not\leq    | 不小于等于 |              $x \not\leq y$               |             `$x \not\lqe y$`              |
+|    \equiv     |   恒等于   |               $x \equiv y$                |              `$x \equiv y$`               |
+|    \approx    |   约等于   |               $x \approx t$               |              `$x \approx y$`              |
+|     \frac     |    分数    |               $\frac{x}{y}$               |              `$\frac{x}{y}$`              |
+|       ^       |    上标    |                   $x^y$                   |                  `$x^y$`                  |
+|       _       |    下标    |                   $x_y$                   |                  `$x_y$`                  |
+|     \sqrt     |  开二次方  |                $\sqrt{x}$                 |               `$\sqrt{x}$`                |
+|     \sqrt     |    开方    |           $\sqrt[x]{y^4+3y-1}$            |          `$\sqrt[x]{y^4+3y-1}$`           |
+|      \pm      |    加减    |                 $x \pm y$                 |                `$x \pm y$`                |
+|      \mp      |    减加    |                 $x \mp y$                 |                `$x \mp y$`                |
+|     \lim      |    极限    |             $\lim_{x \to 10}$             |            `$\lim_{x \to 10}$`            |
+|     \log      |    对数    |                $\log_y(x)$                |               `$\log_y(x)$`               |
+| \displaystyle | 块公式格式 |    $\displaystyle \lim_{x \to \infty}$    |   `$\displaystyle \lim_{x \to \infty}$`   |
+|     \sum      |    求和    |     $\displaystyle \sum_{i=1}^\infty$     |    `$\displaystyle \sum_{i=1}^\infty$`    |
+|     \int      |   求积分   |     $\int_0^\infty x^2 tanx{\rm d}x$      |     `$\int_0^\infty x^2tanx{\rm d}x$`     |
+|   \partial    |    微分    |  $\frac{\partial f(x,y,z)}{\partial x}$   | `$\frac{\partial f(x,y,z)}{\partial x}$ ` |
+|     \prod     |    累积    |       $\displaystyle \prod_{i=1}^n$       |      `$\displaystyle \prod_{i=1}^n$`      |
+|     \iint     |  多重积分  | $\displaystyle \iint_{a}^{b}tanx{\rm d}x$ |       `$\int_{a}^{b}tanx{\rm d}x$`        |
+
+* 多重积分另一种写法：  
+$$
+    \int_{a}^{b}\int_{c}^{d}f(x,y){\rm d}x{\rm d}y
+$$
+
+
+## 数学符号：
+| 符合功能 |      符号      |       语法       |
+| :------: | :------------: | :--------------: |
+|   无穷   |    $\infty$    |    `$\infty$`    |
+|  虚数i   |    $\imath$    |    `$\imath$`    |
+|  虚数j   |    $\jmath$    |    `$\jmath$`    |
+|   矢量   |   $\vec{a}$    |   `$\vec{a}$`    |
+|  一阶导  |  $\dot{f(x)}$  |  `$\dot{f(x)}$`  |
+|  二阶导  | $\ddot{f(x)}$  | `$\ddot{f(x)}$`  |
+|   hat    |   $\hat{a}$    |       `hat       | $\hat{a}$` |
+|  breve   |  $\breve{a}$   |  `$\breve{a}$`   |
+|  tilde   |  $\tilde{a}$   |  `$\tilde{a}$`   |
+|   bar    |   $\bar{a}$    |   `$\bar{a}$`    |
+|  check   |  $\check{a}$   |  `$\check{a}$`   |
+|  acute   |  $\acute{a}$   |  `$\acute{a}$`   |
+|  grave   |  $\grave{x}$   |   `\grave{x}$`   |
+| mathring | $\mathring{a}$ | `$\mathring{a}$` |
+
+
+## 数学标记符：  
+|        标记符         |          语法           |
+| :-------------------: | :---------------------: |
+|     $\leftarrow$      |     `$\leftarrow$`      |
+|     $\rightarrow$     |     `$\rightarrow$`     |
+|   $\leftrightarrow$   |   `$\leftrightarrow$`   |
+|      $\uparrow$       |      `$\uparrow$`       |
+|     $\downarrow$      |     `$\downarrow$`      |
+|     $\Leftarrow$      |     `$\Leftarrow$`      |
+|     $\Rightarrow$     |     `$\Rightarrow$`     |
+|   $\Leftrightarrow$   |   `$\Leftrightarrow$`   |
+|      $\Uparrow$       |      `$\Uparrow$`       |
+|     $\Downarrow$      |     `$\Downarrow$`      |
+|   $\longleftarrow$    |   `$\longleftarrow$`    |
+|   $\longrightarrow$   |   `$\longrightarrow$`   |
+| $\longleftrightarrow$ | `$\longleftrightarrow$` |
+|   $\Longleftarrow$    |   `$\Longleftarrow$`    |
+|   $\Longrightarrow$   |   `$\Longrightarrow$`   |
+| $\Longleftrightarrow$ | `$\Longleftrightarrow$` |
+
+
+
+## 括号以及绝对值
+
+|         括号          |          语法           |
+| :-------------------: | :---------------------: |
+|         $(a)$         |         `$(a)$`         |
+|         $[a]$         |         `$[a]$`         |
+|        $\{a\}$        |        `$\{a\}$`        |
+| $\langle{x}\rangle{}$ | `$\langle{x}\rangle{}$` |
+|  $\lvert{a}\rvert{}$  |  `$\lvert{a}\rvert{}$`  |
+|  $\lVert{a}\rVert{}$  |  `$\lVert{a}\rVert{}$`  |
+
++ 括号的套娃：  
+big$\rightarrow$Big$\rightarrow$bigg$\rightarrow$Bigg
+$$
+\Bigg\langle\bigg\langle\Big\langle\big\langle\langle x \rangle\big\rangle\Big\rangle\bigg\rangle\Bigg\rangle \quad
+\Bigg\lvert\bigg\lvert\Big\lvert\big\lvert\lvert x 
+\rvert\big\rvert\Big\rvert\bigg\rvert\Bigg\rvert \quad
+\Bigg\lVert\bigg\lVert\Big\lVert\big\lVert\lVert x 
+\rVert\big\rVert\Big\rVert\bigg\rVert\Bigg\rVert
+$$
+
+
+##集合运算：
+| 运算符功能 |     运算符     |       代码       |
+| :--------: | :------------: | :--------------: |
+|    属于    |     $\in$      |     `$\in$`      |
+|   不属于   |   $\not\in$    |   `$\not\in$`    |
+|   包含于   |   $\subset$    |   `$\subset$`    |
+|    包含    |   $\supset$    |   `$\supset$`    |
+|  真包含于  |  $\subseteq$   |  `$\subseteq$`   |
+|   真包含   |  $\supseteq$   |  `$\supseteq$`   |
+|  非包含于  | $\not\subset $ | `$\not\subset $` |
+|   非包含   | $\not\supset$  | `$\not\supset$`  |
+| 非真包含于 |  $\subsetneq$  |  `$\subsetneq$`  |
+|  非真包含  |  $\supsetneq$  |  `$\supsetneq$`  |
+|    交易    |     $\cap$     |     `$\cap$`     |
+|    并集    |     $\cup$     |     `$\cup$`     |
+|    差集    |  $\setminus$   |  `$\setminus$`   |
+|    同或    |   $\bigodot$   |   `$\bigodot$`   |
+|    同与    |  $\bigotimes$  |  `$\bigotimes$`  |
+|   实数集   |  $\mathbb{R}$  |  `$\mathbb{R}$`  |
+|  自然数集  |  $\mathbb{Z}$  |  `$\mathbb{Z}$`  |
+|    空集    |  $\emptyset$   |  `$\emptyset$`   |
+
+
+
+
+
+##希腊字母表  
+
+注：很容易看出部分大写和小写的联系就是一个字母的大小写改变
+|   希腊字母    |      语法       |
+| :-----------: | :-------------: |
+|   $\alpha$    |    `$alpha$`    |
+|    $\beta$    |    `$\beta$`    |
+|   $\gamma$    |   `$\gamma$`    |
+|   $\delta$    |   `$\delta$`    |
+|  $\epsilon$   |  `$\epsilon$`   |
+| $\varepsilon$ | `$\varepsilon$` |
+|    $\zeta$    |    `$\zeta$`    |
+|    $\eta$     |    `$\eta$`     |
+|   $\theta$    |   `$\theta$`    |
+|    $\iota$    |    `$\iota$`    |
+|   $\kappa$    |   `$\kappa$`    |
+|   $\lambda$   |   `$\lambda$`   |
+|     $\mu$     |     `$\mu$`     |
+|     $\nu$     |     `$\nu$`     |
+|     $\xi$     |     `$\xi$`     |
+|      $o$      |      `$o$`      |
+|     $\pi$     |     `$\pi$`     |
+|   $\varpi$    |   `$\varpi$`    |
+|    $\rho$     |    `$\rho$`     |
+|   $\varrho$   |   `$\varrho$`   |
+|   $\sigma$    |   `$\sigma$`    |
+|  $\varsigma$  |  `$\varsigma$`  |
+|    $\tau$     |    `$\tau$`     |
+|  $\upsilon$   |  `$\upsilon$`   |
+|    $\phi$     |    `$\phi$`     |
+|   $\varphi$   |   `$\varphi$`   |
+|    $\chi$     |    `$\chi$`     |
+|    $\psi$     |    `$\psi$`     |
+|   $\omega$    |   `$\omega$`    |
+|   $\Gamma$    |   `$\Gamma$`    |
+|   $\Delta$    |   `$\Delta$`    |
+|   $\Theta$    |   `$\Theta$`    |
+|   $\Lambda$   |   `$\Lambda$`   |
+|     $\Xi$     |     `$\Xi$`     |
+|     $\Pi$     |     `$\Pi$`     |
+|   $\Sigma$    |   `$\Sigma$`    |
+|  $\Upsilon$   |  `$\Upsilon$`   |
+|    $\Phi$     |     `\Phi`      |
+|    $\Psi$     |    `$\Psi$`     |
+|   $\Omega$    |   `$\Omega$`    |
+
+## 矩阵
+重点：`&换列  \\换行`
+$$
+\begin{array}{ccc}
+x_1 & x_2 & \dots \\
+x_3 & x_4 & \dots \\
+\vdots & \vdots & \ddots
+\end{array}
+$$
+$$
+\begin{array}{ccc}
+x_{11} & x_{12} & \dots & x_{1j} \\
+x_{21} & x_{22} & \dots & x_{2j} \\
+\vdots & \vdots & \ddots \\
+x_{i1} & x_{i2} & \dots & x_{ij}
+\end{array}
+$$
+$$
+\begin{pmatrix} a & b \\ c & d \\ \end{pmatrix} \quad
+\begin{bmatrix} a & b \\ c & d \\ \end{bmatrix} \quad
+\begin{Bmatrix} a & b \\ c & d \\ \end{Bmatrix} \quad
+\begin{vmatrix} a & b \\ c & d \\ \end{vmatrix} \quad
+\begin{Vmatrix} a & b \\ c & d \\ \end{Vmatrix}
+$$
+
+
+## 多行公式：
+
+### 公式组：
+对齐使用aliganed
+$$
+\begin{aligned}
+a &=b+c+d \\
+x &=y+z
+\end{aligned}
+$$
+不同对齐用gather
+$$
+\begin{gather}
+a &=b+c+d \\
+x &=y+z
+\end{gather}
+$$
+
+### 公式分支： 
+关键词cases
+$$
+y = \begin{cases}
+-x, &x \leq 0 \\
+x, &x > 0
+\end{cases}
+$$
+

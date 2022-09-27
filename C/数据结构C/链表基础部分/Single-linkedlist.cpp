@@ -5,8 +5,7 @@ typedef struct sll
 {
     int val;
     struct sll *next;
-} * node; //注意此时的重命名方法是将struct sll这个类型的指针类型重命名为 node
-
+} * node;           //注意此时的重命名方法是将struct sll这个类型的指针类型重命名为 node
 node head, last, p; //头指针，尾节点，赋值节点
 //单链表的创建
 void build_wei() //尾插法建立单链表（不带头节点
@@ -89,6 +88,10 @@ int get_len() //遍历法求单链表的长度
 }
 node find(int i) //查找第i位的指针
 {
+    if (i < 0 || i > get_len()) //要对i判断
+    {
+        return NULL;
+    }
     int j = 0;
     node head_new;
     head_new = head;
@@ -101,6 +104,12 @@ node find(int i) //查找第i位的指针
 }
 void insert(int x, int i) //插入操作，将x插入链表的第i个位置
 {
+    if (i < 1 || i > get_len()) //要对i判断
+    {
+        printf("error!\n");
+        exit(1);
+        return;
+    }
     node temp = find(i);
     node ins = (node)malloc(sizeof(struct sll));
     ins->val = x;
@@ -131,11 +140,11 @@ int main()
     printf("length :%d\n", get_len());
     printf("the 3_th :%d\n", find(3)->val);
     printf("insert 3 int to 5_th\n");
-    insert(3, 0);
+    insert(3, 5);
     printf("length :%d\n", get_len());
     show();
     printf("delete the 3_th\n");
-    delete_ele(1);
+    delete_ele(3);
     printf("length :%d\n", get_len());
     show();
     if (isempty())

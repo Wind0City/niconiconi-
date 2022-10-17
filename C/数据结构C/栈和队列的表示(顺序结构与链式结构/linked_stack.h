@@ -55,7 +55,7 @@ void push(linkstack &s, char c)
         printf("error!\n");
         exit(1);
     }
-    node p = (node)malloc(sizeof(struct sll)); //画图！
+    node p = (node)malloc(sizeof(struct sll)); 
     p->val = c;
     p->next = s.top->next;
     s.top->next = p;

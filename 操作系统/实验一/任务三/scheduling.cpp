@@ -4,13 +4,40 @@
 #include "stdafx.h"
 #include "scheduling.h"
 #include "stdlib.h"
+#include "time.h"
 
 #define scanf_s scanf // 偷懒行为(O_o)
 
 #define getstruct(type) (type *)malloc(sizeof(type));
 PCB *ready = NULL, *p;
-int allacp=0;
+int allacp = 0;
 
+char *genRandomString(char string[], int length) // 随机生成字符串
+{
+	int flag, i;
+	srand((unsigned)time(NULL));
+	for (i = 0; i < length - 1; i++)
+	{
+		flag = rand() % 3;
+		switch (flag)
+		{
+		case 0:
+			string[i] = 'A' + rand() % 26;
+			break;
+		case 1:
+			string[i] = 'a' + rand() % 26;
+			break;
+		case 2:
+			string[i] = '0' + rand() % 10;
+			break;
+		default:
+			string[i] = 'x';
+			break;
+		}
+	}
+	string[length - 1] = '\0';
+	return string;
+}
 bool sort() // 按照nice数大小入队操作
 {
 	PCB *first, *second;
@@ -138,6 +165,7 @@ bool running() // 进程运行
 
 int _tmain(int argc, _TCHAR *argv[])
 {
+	srand(time(NULL));
 	int len, h = 0;
 	char ch;
 	input();
@@ -154,27 +182,33 @@ int _tmain(int argc, _TCHAR *argv[])
 		p->state = 'R';
 		check();
 		running();
-		printf("\n是否有新进程到达[1/0]:");
-		scanf("%d", &choice);
-		if (choice == 1)//就是添加一个询问而已
+		choice = rand() % 2;
+		if (choice == 1) // 判断
 		{
-			printf("\n请输入进程相关信息:");
-			printf("\n进程号:%d", ++allacp);
-			p = getstruct(PCB); // 动态开辟空间
-			printf("\n输入进程名:");
-			scanf_s("%s", p->name, 10);
-			printf("\n输入进优先数:");
-			int temp;
-			// scanf_s("%d", &temp, sizeof(int));
-			// p->nice = temp;
-			scanf_s("%d", &(p->nice), sizeof(int));
-			printf("\n输入进程运行时间:");
-			scanf_s("%d", &(p->ntime), sizeof(int));
-			printf("\n");
-			p->rtime = 0;
-			p->state = 'W';
-			p->link = NULL;
-			sort();
+			int num = rand() % 10 + 1; // 新进程个数，1-10个
+			printf("\n=========有%d个新进程到达=========\n", num);
+
+			for (int x = 1; x <= num; x++)
+			{
+				printf("\n进程号:%d", allacp);
+				p = getstruct(PCB); // 动态开辟空间
+				printf("\n进程名:");
+				genRandomString(p->name, rand() % 5 + 2); // 随机生成名字
+				printf("%s", p->name);
+				printf("\n优先数:");
+				p->nice = rand() % 10 + 1; // 随机nice数
+				printf("%d", p->nice);
+				printf("\n进程运行时间:");
+				p->ntime = rand() % 10 + 1; // 随机运行时间
+				printf("%d", p->ntime);
+				printf("\n");
+				p->rtime = 0;
+				p->state = 'W';
+				p->link = NULL;
+				sort();
+				allacp++;
+				ch = getchar();
+			}
 		}
 		else
 		{

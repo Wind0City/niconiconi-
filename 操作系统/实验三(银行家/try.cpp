@@ -9,49 +9,49 @@ using namespace std;
 struct pcb
 {
     string name;
-    unordered_map<string, int> maxneed;  // ×î´óĞèÇó
-    unordered_map<string, int> allocaed; // ÒÑ¾­·ÖÅä
-    unordered_map<string, int> max_all;  // ×î¶àĞèÒª£ºÉÏÃæÁ½ÕßµÄ²îÖµ
-    bool jud;                            // ÅĞ¶ÏÊÇ·ñ½áÊø
+    unordered_map<string, int> maxneed;  // æœ€å¤§éœ€æ±‚
+    unordered_map<string, int> allocaed; // å·²ç»åˆ†é…
+    unordered_map<string, int> max_all;  // æœ€å¤šéœ€è¦ï¼šä¸Šé¢ä¸¤è€…çš„å·®å€¼
+    bool jud;                            // åˆ¤æ–­æ˜¯å¦ç»“æŸ
 };
-unordered_map<string, int> resource; // ×ÊÔ´Êı
+unordered_map<string, int> resource; // èµ„æºæ•°
 unordered_map<string, int> availabe;
 vector<pcb> pcbs;
 vector<string> ans;
-void input_resource() // ÊäÈë×ÊÔ´Êı
+void input_resource() // è¾“å…¥èµ„æºæ•°
 {
-    printf("\n================×ÊÔ´´´½¨==================\n");
+    printf("\n================èµ„æºåˆ›å»º==================\n");
     int num;
-    printf("\n×ÊÔ´ÖÖÀàÊı:");
+    printf("\nèµ„æºç§ç±»æ•°:");
     cin >> num;
-    printf("\nÊäÈë¸÷¸ö×ÊÔ´ÃûÒÔ¼°ÊıÄ¿:");
+    printf("\nè¾“å…¥å„ä¸ªèµ„æºåä»¥åŠæ•°ç›®:");
     string name;
     int number;
     for (int i = 1; i <= num; i++)
     {
-        printf("\n%2dºÅ×ÊÔ´", i);
-        printf("\n×ÊÔ´Ãû×Ö:");
+        printf("\n%2då·èµ„æº", i);
+        printf("\nèµ„æºåå­—:");
         cin >> name;
-        printf("\n×ÊÔ´¸öÊı:");
+        printf("\nèµ„æºä¸ªæ•°:");
         cin >> number;
         resource[name] = number;
     }
-    printf("\n================×ÊÔ´´´½¨Íê³É==================\n");
+    printf("\n================èµ„æºåˆ›å»ºå®Œæˆ==================\n");
 }
-void input_pcb() // ÊäÈë½ø³Ì
+void input_pcb() // è¾“å…¥è¿›ç¨‹
 {
-    printf("\n================½ø³Ì´´½¨===================\n");
+    printf("\n================è¿›ç¨‹åˆ›å»º===================\n");
     int num;
-    printf("\n½ø³ÌÊıÄ¿:");
+    printf("\nè¿›ç¨‹æ•°ç›®:");
     cin >> num;
     for (int i = 1; i <= num; i++)
     {
         pcb temp;
         temp.jud = false;
-        printf("%dºÅ½ø³Ì", i);
-        printf("½ø³ÌÃû:");
+        printf("%då·è¿›ç¨‹", i);
+        printf("è¿›ç¨‹å:");
         cin >> temp.name;
-        printf("½ø³ÌµÄ×î´óĞèÇó×ÊÔ´Êı\n");
+        printf("è¿›ç¨‹çš„æœ€å¤§éœ€æ±‚èµ„æºæ•°\n");
         int count;
         for (auto &p : resource)
         {
@@ -59,7 +59,7 @@ void input_pcb() // ÊäÈë½ø³Ì
             cin >> count;
             temp.maxneed[p.first] = count;
         }
-        printf("½ø³ÌµÄÒÑ·ÖÅä×ÊÔ´\n");
+        printf("è¿›ç¨‹çš„å·²åˆ†é…èµ„æº\n");
         for (auto &p : resource)
         {
             cout << p.first << ":";
@@ -67,7 +67,7 @@ void input_pcb() // ÊäÈë½ø³Ì
             temp.allocaed[p.first] = count;
             p.second -= count;
         }
-        printf("\n×î¶à»¹ĞèÒª(¼ÆËãµÃ³ö)\n");
+        printf("\næœ€å¤šè¿˜éœ€è¦(è®¡ç®—å¾—å‡º)\n");
         for (auto &p : resource)
         {
             temp.max_all[p.first] = temp.maxneed[p.first] - temp.allocaed[p.first];
@@ -75,9 +75,9 @@ void input_pcb() // ÊäÈë½ø³Ì
         }
         pcbs.push_back(temp);
     }
-    printf("\n================½ø³Ì´´½¨³É¹¦===================\n");
+    printf("\n================è¿›ç¨‹åˆ›å»ºæˆåŠŸ===================\n");
 }
-bool done() // ÅĞ¶Ï³ÌĞòÊÇ·ñ¶¼ÔËĞĞ½áÊø
+bool done() // åˆ¤æ–­ç¨‹åºæ˜¯å¦éƒ½è¿è¡Œç»“æŸ
 {
     for (auto &p : pcbs)
     {
@@ -88,33 +88,33 @@ bool done() // ÅĞ¶Ï³ÌĞòÊÇ·ñ¶¼ÔËĞĞ½áÊø
     }
     return true;
 }
-void show_pcb() // Õ¹Ê¾Ä¿Ç°½ø³ÌĞÅÏ¢
+void show_pcb() // å±•ç¤ºç›®å‰è¿›ç¨‹ä¿¡æ¯
 {
     printf("\n======================================\n");
     for (auto &p : pcbs)
     {
-        printf("\n½ø³ÌÃû:");
+        printf("\nè¿›ç¨‹å:");
         cout << p.name;
-        if (p.jud == true) // ½ø³ÌÒÑ¾­½áÊø
+        if (p.jud == true) // è¿›ç¨‹å·²ç»ç»“æŸ
         {
-            printf("\n¸Ã½ø³ÌÒÑ½áÊø");
+            printf("\nè¯¥è¿›ç¨‹å·²ç»“æŸ");
             continue;
         }
-        printf("\n¶Ô×ÊÔ´µÄ×î´óĞèÇó:\t");
+        printf("\nå¯¹èµ„æºçš„æœ€å¤§éœ€æ±‚:\t");
         for (auto &i : resource)
         {
             cout << i.first;
             printf(":%d  ", p.maxneed[i.first]);
         }
         printf("\n");
-        printf("\nÒÑ·ÖÅä×ÊÔ´:\t");
+        printf("\nå·²åˆ†é…èµ„æº:\t");
         for (auto &i : resource)
         {
             cout << i.first;
             printf(":%d  ", p.allocaed[i.first]);
         }
         printf("\n");
-        printf("\n×î¶à»¹ĞèÒª:\t");
+        printf("\næœ€å¤šè¿˜éœ€è¦:\t");
         for (auto &i : resource)
         {
             cout << i.first;
@@ -124,9 +124,9 @@ void show_pcb() // Õ¹Ê¾Ä¿Ç°½ø³ÌĞÅÏ¢
     }
     printf("\n======================================\n");
 }
-void shoresource() // Õ¹Ê¾×ÊÔ´ĞÅÏ¢
+void shoresource() // å±•ç¤ºèµ„æºä¿¡æ¯
 {
-    printf("\n=================ÏµÍ³Ê£Óà×ÊÔ´================\n");
+    printf("\n=================ç³»ç»Ÿå‰©ä½™èµ„æº================\n");
     for (auto &p : resource)
     {
         cout << p.first << " : " << p.second << "\n";
@@ -140,25 +140,25 @@ bool issafe()
         bool jjj = false;
         for (auto &p : pcbs)
         {
-            if (p.jud == false) // Î´½áÊø
+            if (p.jud == false) // æœªç»“æŸ
             {
                 bool flag = false;
-                for (auto &i : resource) // ²¢ÇÒ×ÊÔ´¹»
+                for (auto &i : resource) // å¹¶ä¸”èµ„æºå¤Ÿ
                 {
                     if (p.max_all[i.first] > i.second)
                     {
                         flag = true;
                     }
                 }
-                if (!flag) // ¶¼Âú×ã
+                if (!flag) // éƒ½æ»¡è¶³
                 {
-                    for (auto &i : resource) // ²¢ÇÒ×ÊÔ´¹»
+                    for (auto &i : resource) // å¹¶ä¸”èµ„æºå¤Ÿ
                     {
                         i.second += p.max_all[i.first];
                         p.jud = true;
                     }
                     ans.push_back(p.name);
-                    jjj = true; // ÕÒµ½Ò»¸ö
+                    jjj = true; // æ‰¾åˆ°ä¸€ä¸ª
                     break;
                 }
                 else
@@ -167,7 +167,7 @@ bool issafe()
                 }
             }
         }
-        if (!jjj) // Ò»¸ö¶¼Ã»ÕÒµ½
+        if (!jjj) // ä¸€ä¸ªéƒ½æ²¡æ‰¾åˆ°
         {
             return false;
         }
@@ -184,17 +184,17 @@ int bank(unordered_map<string, int> &request, string &choice)
             {
                 if (request[i.first] > i.second)
                 {
-                    return 1; // ËüËùĞèÒªµÄ×ÊÔ´ÊıÒÑ³¬¹ıËüËùĞû²¼µÄ×î´óÖµ
+                    return 1; // å®ƒæ‰€éœ€è¦çš„èµ„æºæ•°å·²è¶…è¿‡å®ƒæ‰€å®£å¸ƒçš„æœ€å¤§å€¼
                 }
             }
             for (auto &i : resource)
             {
                 if (request[i.first] > i.second)
                 {
-                    return 2; // ÉĞÎŞ×ã¹»×ÊÔ´
+                    return 2; // å°šæ— è¶³å¤Ÿèµ„æº
                 }
             }
-            for (auto &i : resource) // ÊÔÌ½ĞÔ·ÖÅä
+            for (auto &i : resource) // è¯•æ¢æ€§åˆ†é…
             {
                 i.second -= request[i.first];
                 p.allocaed[i.first] += request[i.first];
@@ -223,9 +223,9 @@ int main()
     show_pcb();
     shoresource();
     string choice;
-    printf("Ñ¡Ôñ½ø³Ì:");
+    printf("é€‰æ‹©è¿›ç¨‹:");
     cin >> choice;
-    printf("ÊäÈë¶Ô´Ë½ø³ÌµÄrequest:");
+    printf("è¾“å…¥å¯¹æ­¤è¿›ç¨‹çš„request:");
     printf("\n======================================\n");
     int numb;
     for (auto &p : resource)
@@ -239,15 +239,15 @@ int main()
     getchar();
     if (last == 1)
     {
-        printf("\nËüËùĞèÒªµÄ×ÊÔ´ÊıÒÑ³¬¹ıËüËùĞû²¼µÄ×î´óÖµ\n");
+        printf("\nå®ƒæ‰€éœ€è¦çš„èµ„æºæ•°å·²è¶…è¿‡å®ƒæ‰€å®£å¸ƒçš„æœ€å¤§å€¼\n");
     }
     else if (last == 2)
     {
-        printf("\nÉĞÎŞ×ã¹»×ÊÔ´\n");
+        printf("\nå°šæ— è¶³å¤Ÿèµ„æº\n");
     }
     else if (last == 3)
     {
-        printf("´¦ÓÚ°²È«×´Ì¬,Ò»¸ö¿ÉÄÜµÄ°²È«ĞòÁĞÎª:\n");
+        printf("å¤„äºå®‰å…¨çŠ¶æ€,ä¸€ä¸ªå¯èƒ½çš„å®‰å…¨åºåˆ—ä¸º:\n");
         for (auto i : ans)
         {
             cout << i << "-->";
@@ -256,7 +256,7 @@ int main()
     }
     else if (last == 4)
     {
-        printf("²»°²È«!\n");
+        printf("ä¸å®‰å…¨!\n");
     }
     getchar();
     return 0;

@@ -1,76 +1,67 @@
 #include <stdio.h>
 #include <string.h>
 const int maxn = 1e3;
-int max_need[maxn][maxn]; // ×î´ó
-int had_allo[maxn][maxn]; // ÒÑ·ÖÅä
-int m_h_need[maxn][maxn]; // ĞèÒª
-int avaliable[maxn];      // ×ÊÔ´¸öÊı
-int mine_request[maxn];   // requestÑ¡Ïî
-int num_pcb;              // ½ø³Ì¸öÊı
-int num_res;              // ×ÊÔ´¸öÊı
-int mine_choice;          // requestµÄÑ¡Ïî
-bool jud[maxn];           // ×ÊÔ´ÊÇ·ñÍê³É
-int ansf[maxn];           // ×îÖÕ´ğ°¸°²È«ĞòÁĞ
-int tot;                  // ÓÃÀ´¸ø´ğ°¸°²È«ĞòÁĞ¼ÆÊı
-void init()               // ³õÊ¼»¯
+int max_need[maxn][maxn]; // æœ€å¤§
+int had_allo[maxn][maxn]; // å·²åˆ†é…
+int m_h_need[maxn][maxn]; // éœ€è¦
+int avaliable[maxn];      // èµ„æºä¸ªæ•°
+int mine_request[maxn];   // requesté€‰é¡¹
+int num_pcb;              // è¿›ç¨‹ä¸ªæ•°
+int num_res;              // èµ„æºä¸ªæ•°
+int mine_choice;          // requestçš„é€‰é¡¹
+bool jud[maxn];           // èµ„æºæ˜¯å¦å®Œæˆ
+int ansf[maxn];           // æœ€ç»ˆç­”æ¡ˆå®‰å…¨åºåˆ—
+int tot;                  // ç”¨æ¥ç»™ç­”æ¡ˆå®‰å…¨åºåˆ—è®¡æ•°
+void input_ava() // è¾“å…¥åˆ›å»ºè¿›ç¨‹
 {
-    memset(jud, 0, sizeof(jud)); // ½«Êı×éÈ«¸³ÖµÎª0
-    memset(max_need, 0, sizeof(max_need));
-    memset(had_allo, 0, sizeof(had_allo));
-    memset(m_h_need, 0, sizeof(m_h_need));
-    memset(avaliable, 0, sizeof(avaliable));
-    tot = 1;
-}
-void input_ava() // ÊäÈë´´½¨½ø³Ì
-{
-    printf("\nÊäÈë×ÊÔ´¸öÊı:");
+    printf("\nè¾“å…¥èµ„æºä¸ªæ•°:");
     scanf("%d", &num_res);
     for (int i = 1; i <= num_res; i++)
     {
-        printf("\n%dºÅ×ÊÔ´¸öÊı:", i);
+        printf("\n%då·èµ„æºä¸ªæ•°:", i);
         scanf("%d", &avaliable[i]);
     }
-    printf("´´½¨Íê³É\n");
+    printf("åˆ›å»ºå®Œæˆ\n");
 }
-void input_pcb() // ÊäÈë³õÊ¼»¯½ø³Ì
+void input_pcb() // è¾“å…¥åˆå§‹åŒ–è¿›ç¨‹
 {
-    printf("ÊäÈë½ø³Ì¸öÊı");
+    printf("è¾“å…¥è¿›ç¨‹ä¸ªæ•°");
     scanf("%d", &num_pcb);
-    printf("½ø³Ì¶ÔÓ¦Ã¿¸ö×ÊÔ´µÄ×î´óĞèÇó:\n");
+    printf("è¿›ç¨‹å¯¹åº”æ¯ä¸ªèµ„æºçš„æœ€å¤§éœ€æ±‚:\n");
     for (int i = 1; i <= num_pcb; i++)
     {
         jud[i] = false;
-        printf("\n%dºÅ½ø³Ì:\n", i);
+        printf("\n%då·è¿›ç¨‹:\n", i);
         for (int j = 1; j <= num_res; j++)
         {
-            printf("%dºÅ×ÊÔ´\n", j);
+            printf("%då·èµ„æº\n", j);
             scanf("%d", &max_need[i][j]);
         }
     }
-    printf("½ø³Ì¶ÔÓ¦Ã¿¸ö×ÊÔ´µÄÒÑ·ÖÅä:\n");
+    printf("è¿›ç¨‹å¯¹åº”æ¯ä¸ªèµ„æºçš„å·²åˆ†é…:\n");
     for (int i = 1; i <= num_pcb; i++)
     {
-        printf("\n%dºÅ½ø³Ì:\n", i);
+        printf("\n%då·è¿›ç¨‹:\n", i);
         for (int j = 1; j <= num_res; j++)
         {
-            printf("%dºÅ×ÊÔ´\n", j);
+            printf("%då·èµ„æº\n", j);
             scanf("%d", &had_allo[i][j]);
-            avaliable[j] -= had_allo[i][j]; // ¶ÔÓ¦µÄ×ÊÔ´Êı¼õÉÙ
+            avaliable[j] -= had_allo[i][j]; // å¯¹åº”çš„èµ„æºæ•°å‡å°‘
         }
     }
-    printf("½ø³Ì¶ÔÓ¦Ã¿¸ö×ÊÔ´µÄĞèÇó:\n");
+    printf("è¿›ç¨‹å¯¹åº”æ¯ä¸ªèµ„æºçš„éœ€æ±‚:\n");
     for (int i = 1; i <= num_pcb; i++)
     {
-        printf("\n%dºÅ½ø³Ì:\n", i);
+        printf("\n%då·è¿›ç¨‹:\n", i);
         for (int j = 1; j <= num_res; j++)
         {
-            printf("%dºÅ×ÊÔ´:", j);
-            m_h_need[i][j] = max_need[i][j] - had_allo[i][j]; // ¼ÆËãµÃ³öneed¾ØÕó
+            printf("%då·èµ„æº:", j);
+            m_h_need[i][j] = max_need[i][j] - had_allo[i][j]; // è®¡ç®—å¾—å‡ºneedçŸ©é˜µ
             printf("%d\n", m_h_need[i][j]);
         }
     }
 }
-bool isdone() // ÅĞ¶ÏËùÓĞµÄ½ø³ÌÊÇ·ñ¶¼ÒÑ½áÊø
+bool isdone() // åˆ¤æ–­æ‰€æœ‰çš„è¿›ç¨‹æ˜¯å¦éƒ½å·²ç»“æŸ
 {
     for (int i = 1; i <= num_pcb; i++)
     {
@@ -81,33 +72,33 @@ bool isdone() // ÅĞ¶ÏËùÓĞµÄ½ø³ÌÊÇ·ñ¶¼ÒÑ½áÊø
     }
     return true;
 }
-bool issafe() // °²È«Ëã·¨
+bool issafe() // å®‰å…¨ç®—æ³•
 {
-    while (!isdone()) // ÔÚËùÓĞ½ø³ÌÃ»Íê³ÉÇ°
+    while (!isdone()) // åœ¨æ‰€æœ‰è¿›ç¨‹æ²¡å®Œæˆå‰
     {
-        bool jjj = false; // ÓÃÀ´±ê¼ÇÊÇ·ñÄÜÕÒµ½Ò»¸öÂú×ãµ±Ç°×ÊÔ´¸öÊıµÄ½ø³Ì
+        bool jjj = false; // ç”¨æ¥æ ‡è®°æ˜¯å¦èƒ½æ‰¾åˆ°ä¸€ä¸ªæ»¡è¶³å½“å‰èµ„æºä¸ªæ•°çš„è¿›ç¨‹
         for (int i = 1; i <= num_pcb; i++)
         {
             if (!jud[i])
             {
-                bool flag = false;                 // ÅĞ¶Ïµ±Ç°½ø³ÌÊÇ·ñÂú×ã
-                for (int j = 1; j <= num_res; j++) // ±éÀúËùÓĞ×ÊÔ´Êı
+                bool flag = false;                 // åˆ¤æ–­å½“å‰è¿›ç¨‹æ˜¯å¦æ»¡è¶³
+                for (int j = 1; j <= num_res; j++) // éå†æ‰€æœ‰èµ„æºæ•°
                 {
-                    if (m_h_need[i][j] > avaliable[j]) // ÓĞÒ»Ïî×ÊÔ´Êı²»¹»
+                    if (m_h_need[i][j] > avaliable[j]) // æœ‰ä¸€é¡¹èµ„æºæ•°ä¸å¤Ÿ
                     {
-                        flag = true; // Õâ¸ö½ø³Ì²»Âú×ã
+                        flag = true; // è¿™ä¸ªè¿›ç¨‹ä¸æ»¡è¶³
                     }
                 }
-                if (!flag) // µ±Ç°½ø³ÌÂú×ã,ÔËĞĞ
+                if (!flag) // å½“å‰è¿›ç¨‹æ»¡è¶³,è¿è¡Œ
                 {
-                    for (int j = 1; j <= num_res; j++) // ·µ»¹×ÊÔ´
+                    for (int j = 1; j <= num_res; j++) // è¿”è¿˜èµ„æº
                     {
-                        avaliable[j] += max_need[i][j];
+                        avaliable[j] += had_allo[i][j];
                     }
                     jud[i] = true;
                     printf("%d!,done!\n", i);
-                    ansf[tot++] = i; // ½«´Ë½ø³ÌÍÆÈë°²È«ĞòÁĞÖĞ
-                    jjj = true;      // ÕÒµ½Ò»¸öÂú×ãµÄ½ø³Ì
+                    ansf[tot++] = i; // å°†æ­¤è¿›ç¨‹æ¨å…¥å®‰å…¨åºåˆ—ä¸­
+                    jjj = true;      // æ‰¾åˆ°ä¸€ä¸ªæ»¡è¶³çš„è¿›ç¨‹
                     break;
                 }
                 else
@@ -116,32 +107,32 @@ bool issafe() // °²È«Ëã·¨
                 }
             }
         }
-        if (!jjj) // Ò»¸öÂú×ãµÄ½ø³Ì¶¼Ã»ÕÒµ½
+        if (!jjj) // ä¸€ä¸ªæ»¡è¶³çš„è¿›ç¨‹éƒ½æ²¡æ‰¾åˆ°
         {
-            return false; // ¼ÄÁË
+            return false; // å¯„äº†
         }
     }
     return true;
 }
 int bank()
 {
-    for (int i = 1; i <= num_res; i++) // ±éÀúËùÓĞµÄ×ÊÔ´
+    for (int i = 1; i <= num_res; i++) // éå†æ‰€æœ‰çš„èµ„æº
     {
         if (mine_request[i] > max_need[mine_choice][i])
         {
-            return 1; // ĞèÒªµÄ×ÊÔ´Êı³¬¹ı=Ëü±¾ÉíĞû²¼µÄ×î´óÖµ
+            return 1; // éœ€è¦çš„èµ„æºæ•°è¶…è¿‡=å®ƒæœ¬èº«å®£å¸ƒçš„æœ€å¤§å€¼
         }
         if (mine_request[i] > avaliable[i])
         {
-            return 2; // ¶ÔÓ¦µÄ×ÊÔ´²»¹»
+            return 2; // å¯¹åº”çš„èµ„æºä¸å¤Ÿ
         }
     }
-    bool isjud = false;                // ÅĞ¶ÏÊÔÌ½ĞÔ·Ö²¼ÊÇ·ñÖ±½Ó½«ËüÍê³É
-    for (int i = 1; i <= num_res; i++) // ÊÔÌ½ĞÔ·Ö²¼
+    bool isjud = false;                // åˆ¤æ–­è¯•æ¢æ€§åˆ†å¸ƒæ˜¯å¦ç›´æ¥å°†å®ƒå®Œæˆ
+    for (int i = 1; i <= num_res; i++) // è¯•æ¢æ€§åˆ†å¸ƒ
     {
-        avaliable[i] -= mine_request[i];             // ×Ü×ÊÔ´Êı¶ÔÓ¦·ÖÅä
-        had_allo[mine_choice][i] += mine_request[i]; // ÒÑ·ÖÅäµÄ×ÊÔ´ÊıÔö¼Ó
-        m_h_need[mine_choice][i] -= mine_request[i]; // ĞèÇó¼õÉÙ
+        avaliable[i] -= mine_request[i];             // æ€»èµ„æºæ•°å¯¹åº”åˆ†é…
+        had_allo[mine_choice][i] += mine_request[i]; // å·²åˆ†é…çš„èµ„æºæ•°å¢åŠ 
+        m_h_need[mine_choice][i] -= mine_request[i]; // éœ€æ±‚å‡å°‘
         if (m_h_need[mine_choice][i] > 0)
         {
             isjud = true;
@@ -152,11 +143,11 @@ int bank()
         jud[mine_choice] = true;
         printf("%d!,done!\n", mine_choice);
     }
-    if (issafe()) // Ö´ĞĞ°²È«ĞÔËã·¨
+    if (issafe()) // æ‰§è¡Œå®‰å…¨æ€§ç®—æ³•
     {
-        return 3; // °²È«·µ»Ø3
+        return 3; // å®‰å…¨è¿”å›3
     }
-    return 4; // ·ñÔò·µ»Ø4
+    return 4; // å¦åˆ™è¿”å›4
 }
 int main()
 {
@@ -164,30 +155,30 @@ int main()
     input_pcb();
     for (int i = 1; i <= num_res; i++)
     {
-        printf("\n%dºÅ½ø³ÌÊ£Óà: %d\n", i, avaliable[i]);
+        printf("\n%då·è¿›ç¨‹å‰©ä½™: %d\n", i, avaliable[i]);
     }
-    printf("\nÑ¡Ôñ½ø³Ì:");
+    printf("\né€‰æ‹©è¿›ç¨‹:");
     scanf("%d", &mine_choice);
 
-    printf("\nÊäÈë¶Ô´Ë½ø³ÌµÄreques:\n");
+    printf("\nè¾“å…¥å¯¹æ­¤è¿›ç¨‹çš„reques:\n");
     for (int i = 1; i <= num_res; i++)
     {
-        printf("\nĞèÒª%dºÅ×ÊÔ´:", i);
+        printf("\néœ€è¦%då·èµ„æº:", i);
         scanf("%d", &mine_request[i]);
     }
     tot = 1;
     int last = bank();
     if (last == 1)
     {
-        printf("\nËüËùĞèÒªµÄ×ÊÔ´ÊıÒÑ³¬¹ıËüËùĞû²¼µÄ×î´óÖµ\n");
+        printf("\nå®ƒæ‰€éœ€è¦çš„èµ„æºæ•°å·²è¶…è¿‡å®ƒæ‰€å®£å¸ƒçš„æœ€å¤§å€¼\n");
     }
     else if (last == 2)
     {
-        printf("\nÉĞÎŞ×ã¹»×ÊÔ´\n");
+        printf("\nå°šæ— è¶³å¤Ÿèµ„æº\n");
     }
     else if (last == 3)
     {
-        printf("´¦ÓÚ°²È«×´Ì¬,Ò»¸ö¿ÉÄÜµÄ°²È«ĞòÁĞÎª:\n");
+        printf("å¤„äºå®‰å…¨çŠ¶æ€,ä¸€ä¸ªå¯èƒ½çš„å®‰å…¨åºåˆ—ä¸º:\n");
         for (int i = 1; i <= num_pcb; i++)
         {
             printf("%2d->", ansf[i] - 1);
@@ -195,7 +186,7 @@ int main()
     }
     else if (last == 4)
     {
-        printf("²»°²È«!\n");
+        printf("ä¸å®‰å…¨!\n");
     }
     printf("\n***********************************************************\n");
     getchar();

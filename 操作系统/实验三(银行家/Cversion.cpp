@@ -12,7 +12,7 @@ int mine_choice;          // request的选项
 bool jud[maxn];           // 资源是否完成
 int ansf[maxn];           // 最终答案安全序列
 int tot;                  // 用来给答案安全序列计数
-void input_ava() // 输入创建进程
+void input_ava()          // 输入创建进程
 {
     printf("\n输入资源个数:");
     scanf("%d", &num_res);
@@ -141,6 +141,11 @@ int bank()
     if (isjud)
     {
         jud[mine_choice] = true;
+        for (int i = 1; i <= num_res; i++)
+        {
+            avaliable[i] += had_allo[mine_choice][i];
+        }
+        ansf[tot++] = mine_choice;
         printf("%d!,done!\n", mine_choice);
     }
     if (issafe()) // 执行安全性算法
